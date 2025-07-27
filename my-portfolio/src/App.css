@@ -1,0 +1,15 @@
+/* App.css or Layout.css */
+.body {
+    margin: 0;
+    padding: 0;
+}
+.main-content {
+  margin-right: 220px; /* same as your sidebar width */
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-right: 0;
+  }
+}

@@ -1,22 +1,51 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../Styles/Navbar.css';
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import "../styles/Navbar.css";
 
 function Navbar() {
-  return (
-    <nav className="navbar">
-      <h1 className="logo">
-        <Link to="/" className="logo-link">Alfisha</Link>
-      </h1>
+  const [isOpen, setIsOpen] = useState(false);
 
-      <ul className="nav-links">
-        <li><Link to="/Home">Home</Link></li>
-        <li><Link to="/About">About Me</Link></li>
-        <li><Link to="/Skills">My Skills</Link></li>
-        <li><Link to="/Projects">Projects</Link></li>
-        <li><Link to="/Contact">Contact Me</Link></li>
-      </ul>
-    </nav>
+  const toggleNavbar = () => setIsOpen(!isOpen);
+  const closeNavbar = () => setIsOpen(false);
+
+  return (
+    <>
+      {/* Hamburger menu for mobile */}
+      <div className="hamburger" onClick={toggleNavbar}>
+        ☰
+      </div>
+
+      {/* Overlay for mobile */}
+      {isOpen && <div className="overlay" onClick={closeNavbar}></div>}
+
+      {/* Mobile Sidebar */}
+      <nav className={`mobile-navbar ${isOpen ? "open" : ""}`}>
+        <h1 className="logo">
+          <NavLink to="/" onClick={closeNavbar}>Alfisha</NavLink>
+        </h1>
+        <div className="nav-links">
+          <NavLink to="/" className="nav-item" onClick={closeNavbar}>Home</NavLink>
+          <NavLink to="/about" className="nav-item" onClick={closeNavbar}>About</NavLink>
+          <NavLink to="/skills" className="nav-item" onClick={closeNavbar}>Skills</NavLink>
+          <NavLink to="/projects" className="nav-item" onClick={closeNavbar}>Projects</NavLink>
+          <NavLink to="/contact" className="nav-item" onClick={closeNavbar}>Contact</NavLink>
+        </div>
+      </nav>
+
+      {/* Navbar for Desktop  */}
+      <div className="top-navbar">
+        <h1 className="logo">
+          <NavLink to="/">Alfisha</NavLink>
+        </h1>
+        <div className="nav-links">
+          <NavLink to="/" className="nav-item">Home</NavLink>
+          <NavLink to="/about" className="nav-item">About</NavLink>
+          <NavLink to="/skills" className="nav-item">Skills</NavLink>
+          <NavLink to="/projects" className="nav-item">Projects</NavLink>
+          <NavLink to="/contact" className="nav-item">Contact</NavLink>
+        </div>
+      </div>
+    </>
   );
 }
 
