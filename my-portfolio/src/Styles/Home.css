@@ -3,7 +3,7 @@
 .home {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 4rem 2rem;
   min-height: 100vh;
   background: #fffaf0;
@@ -70,7 +70,7 @@
   width: 300px;
   border-radius: 10%;
   object-fit: cover;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 /* Responsive layout */
@@ -92,5 +92,11 @@
   .home-img img {
     width: 200px;
     margin-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .home-text {
+    padding: 0 90px 0 90px;
   }
 }
